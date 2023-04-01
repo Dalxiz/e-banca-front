@@ -52,9 +52,14 @@
      
            <!-- Navigation -->
            <ul class="navbar-nav">
+            <li class="nav-item">
+               <router-link to="/home" class="nav-link ">
+                 <i class="fe fe-user"></i> Dashboards
+               </router-link>
+             </li>
              <li class="nav-item">
                <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarDashboards">
-                 <i class="fe fe-home"></i> Dashboards
+                 <i class="fe fe-home"></i> Modulo Bancario
                </a>
                <div class="collapse show" id="sidebarDashboards">
                  <ul class="nav nav-sm flex-column">
@@ -77,7 +82,7 @@
                </div>
              </li>
              <li class="nav-item">
-               <router-link to="/colaborador/index" class="nav-link ">
+               <router-link to="/usuarios/create" class="nav-link ">
                  <i class="fe fe-user"></i> Usurios
                </router-link>
              </li>
