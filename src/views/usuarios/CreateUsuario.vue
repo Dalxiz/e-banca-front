@@ -70,12 +70,12 @@
                     <ul class="nav nav-tabs nav-overflow header-tabs">
                         <li class="nav-item">
                         <a href="account-general.html" class="nav-link active">
-                            Todos los usuarios
+                            Nuevo usuario 
                         </a>
                         </li>
                         <li class="nav-item">
                         <a href="account-billing.html" class="nav-link">
-                            Nuevo usuario
+                            Todos los usuarios
                         </a>
                         
                         </li>

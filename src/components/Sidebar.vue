@@ -83,7 +83,7 @@
              </li>
              <li class="nav-item">
                <router-link to="/usuarios/create" class="nav-link ">
-                 <i class="fe fe-user"></i> Usurios
+                 <i class="fe fe-user"></i> Usuarios
                </router-link>
              </li>
          </ul>
