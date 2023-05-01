@@ -3,6 +3,7 @@
     <nav>
       <!-- <sidebar/> -->
     </nav>
+    <notifications group="foo" />
     <router-view/>
   </div>
 </template>

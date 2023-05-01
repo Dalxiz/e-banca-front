@@ -5,9 +5,10 @@
       <Sidebar/>
       
     <top-nav/>
-    <div class="container">
-      <h1>Dashboards</h1>
-    </div>
+
+        <div class="container">
+            <h1>Modulo Bancario</h1>
+        </div>
     </div>
     
 </template>
@@ -18,7 +19,7 @@ import Sidebar from '@/components/Sidebar.vue';
 import TopNav from '@/components/TopNav.vue';
 
 export default {
-  name: 'HomeView',
+  name: 'ModuloBancario',
   components: {
     Sidebar,
     TopNav

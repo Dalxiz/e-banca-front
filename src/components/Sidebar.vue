@@ -52,40 +52,21 @@
      
            <!-- Navigation -->
            <ul class="navbar-nav">
-            <li class="nav-item">
-               <router-link to="/home" class="nav-link ">
-                 <i class="fe fe-user"></i> Dashboards
+            <li v-for="item in menus" class="nav-item">
+               <router-link class="nav-link " :to="item.patch" >
+                 <i :class="item.icon"></i> {{ item.nombre }}
                </router-link>
              </li>
-             <li class="nav-item">
-               <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarDashboards">
+             <!-- <li class="nav-item">
+               <router-link to="/module-banca" class="nav-link ">
                  <i class="fe fe-home"></i> Modulo Bancario
-               </a>
-               <div class="collapse show" id="sidebarDashboards">
-                 <ul class="nav nav-sm flex-column">
-                   <li class="nav-item">
-                     <a href="./index.html" class="nav-link active">
-                       Cta. Corriente
-                     </a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="./dashboard-project-management.html" class="nav-link ">
-                       Credito Consumo
-                     </a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="./dashboard-ecommerce.html" class="nav-link ">
-                       Credito Hipotecario
-                     </a>
-                   </li>
-                 </ul>
-               </div>
+               </router-link>
              </li>
              <li class="nav-item">
                <router-link to="/usuarios/create" class="nav-link ">
                  <i class="fe fe-user"></i> Usuarios
                </router-link>
-             </li>
+             </li> -->
          </ul>
          
            <!-- Push content down -->
@@ -137,8 +118,22 @@
    </template>
    
    <script>
+   import axios from 'axios';
    export default {
-     name: 'Sidebar'    
+     name: 'Sidebar',
+     data() {
+      return {
+        menus : [],
+      }
+     }, 
+     
+     beforeMount() {
+      axios.get('http://localhost:4201/list_menu/listar_menu').then((result)=>{
+        this.menus = result.data;
+      }).catch((err)=>{
+        console.log(err);
+      })
+     },
    }
    </script>
    

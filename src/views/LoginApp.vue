@@ -5,13 +5,20 @@
                 <div class="col-12 col-md-5 col-xl-4 my-5">
 
                 <!-- Heading -->
-                <h1 class="display-4 text-center mb-3">
-                    Iniciar sesión
+                
+                
+                
+                
+                    <h1 v-for="item in empresa" class="display-4 text-center mb-3">
+                    <img src="../../public/logo.jpg"  alt="...">
+                    <br>
+                    {{ item.nombre }}
                 </h1>
+                
 
                 <!-- Subheading -->
                 <p class="text-muted text-center mb-5">
-                   Panel administrador
+                    Iniciar sesión
                 </p>
 
                 <!-- Form -->
@@ -86,6 +93,7 @@ export default {
   name: 'LoginApp',
   data() {
       return {
+        empresa: [],
           email: '',
           password: '',
           msm_error: ''
@@ -93,7 +101,16 @@ export default {
   },
   created(){
     console.log(this.$url);
+    this.getEmpresa();
   },
+  beforeMount() {
+        axios.get('http://localhost:4201/res_empresa/listar_empresa').then((result)=>{
+            this.empresa = result.data;
+            console.log(empresa)
+        }).catch((error)=>{
+            console.log(error);
+        })
+      },
   methods: {
       validar(){
         if(!this.email){
@@ -113,18 +130,35 @@ export default {
             password: this.password
             }   
 
-        axios.post(this.$url+'/login_usuario',data).then((result)=>{
+        axios.post(this.$url+'/login_usuario',data,{
+            headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': this.$token
+              }
+        }).then((result)=>{
             if (result.data.data == undefined) {
                 this.msm_error = result.data.message;
-            } else {
+            } 
+
+            if(result.data.token){                
                 console.log(result);
+                localStorage.setItem('token', result.data.token);
                 localStorage.setItem('user',JSON.stringify(result.data.usuario));
                 this.$router.push({name: 'HomeView'});
+            
             }
         }).catch((error)=>{
             console.log(error)
         });
-      }
+      },
+      getEmpresa() {
+        axios.get('http://localhost:4201/res_empresa/listar_empresa').then((result)=>{
+            this.empresa = result.data;
+            console.log(empresa)
+        }).catch((error)=>{
+            console.log(error);
+        })
+      },
   },
   components: {
 
